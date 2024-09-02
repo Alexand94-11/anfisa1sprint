@@ -7,3 +7,4 @@ urlpatterns = [
     path('ice_cream/', include('ice_cream.urls', namespace='ice_cream')),
     path('admin/', admin.site.urls),
 ]
+# Коммент для синхронизации в Git
