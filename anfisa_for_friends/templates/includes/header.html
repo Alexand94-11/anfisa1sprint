@@ -1,4 +1,5 @@
 {% load static %}
+{% with request.resolver_match.view_name as view_name %}
 <header>
   <img src="{% static 'img/logo.png' %}" height="50" alt="">
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
@@ -16,19 +17,22 @@
       </div>
       <div class="collapse navbar-collapse" id="navbarNav">                      
         <ul class="nav nav-pills">
-          <li class="nav-item">              
-            <a class="nav-link" href="{% url 'homepage:index' %}">
+          <li class="nav-item">  
+            <!-- Добавлен класс active -->            
+            <a class="nav-link {% if view_name  == 'homepage:index' %}active{% endif %}" 
+              href="{% url 'homepage:index' %}">
               Главная
             </a> 
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'ice_cream:ice_cream_list' %}">
+            <a class="nav-link {% if view_name  == 'ice_cream:ice_cream_list' %}active{% endif %}"
+              href="{% url 'ice_cream:ice_cream_list' %}">
               Каталог мороженого
             </a> 
           </li>
           <li class="nav-item">
-            <!-- Добавлен класс active -->
-            <a class="nav-link active" href="{% url 'about:description' %}">
+            <a class="nav-link {% if view_name  == 'about:description' %}active{% endif %}" 
+              href="{% url 'about:description' %}">
               О проекте
             </a> 
           </li>
@@ -40,3 +44,4 @@
     </div>
   </nav>
 </header>
+{% endwith %}
